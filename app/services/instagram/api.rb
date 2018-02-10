@@ -9,8 +9,14 @@ module Instagram
             @access_token = params[:access_token]
         end
 
-        def feed_pics
-            extract_pics_urls(feed_pics_service, "standard_resolution")
+        def feed_pics(with_comments=false, resolution=:standard_resolution)
+            res = {
+                thumbnail: 'thumbnail',
+                low_resolution: 'low_resolution',
+                standard_resolution: 'standard_resolution'
+            }.fetch(resolution)
+
+            extract_pics_urls(feed_pics_service, res, with_comments)
         end
 
         private
@@ -24,8 +30,12 @@ module Instagram
             data = response.parsed_response
         end
 
-        def extract_pics_urls(pics_hash, resolution)
-            pics_hash["data"].map { |d| d["images"][resolution]["url"] }
+        def extract_pics_urls(pics_hash, resolution, with_comments)
+            if with_comments
+                pics_hash["data"].map { |d| { url: d["images"][resolution]["url"], comment: d["caption"].nil? ? nil : d["caption"]["text"]}}
+            else
+                pics_hash["data"].map { |d| { url: d["images"][resolution]["url"] }}
+            end
         end
     end
 end

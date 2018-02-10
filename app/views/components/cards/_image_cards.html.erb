@@ -1,0 +1,38 @@
+<%#
+Image Card
+Provide a bootstrap card element with image and optional comment and header.
+@param img_src [String] * the img url.
+@param commnet [String] the img comment.
+@param type [Symbol] (:primary) styles it differently
+@param heading [String] (nil) the heading
+%>
+
+<% img_src = local_assigns.fetch(:img_src) %>
+
+<% return if img_src.blank? %>
+
+<% heading = local_assigns[:heading].presence %>
+<% comment = local_assigns[:comment].presence %>
+
+<% type = local_assigns.fetch(:type, :primary) %>
+<% allowed_types = [
+  :primary, :secondary,
+  :success, :danger, :warning, :info,
+  :light, :dark
+] %>
+<% unless type.in?(allowed_types) %>
+  <% raise "#{type} is invalid. Allowed values: #{allowed_types.join(', ')}." %>
+<% end %>
+<% type_class = "border-#{type}" %>
+
+<%= content_tag :div, class: "card #{type_class}", role: 'card' do %>
+  <img class="card-img-top" src="<%= img_src %>" alt="Card image cap">
+    <div class="card-body">
+    <% if heading %>
+      <h5 class="card-title"><%= heading %></h5>
+    <% end %>
+    <% if comment %>
+        <p class="card-text"><%= comment %></p>
+    <% end %>
+    </div>
+<% end %>
