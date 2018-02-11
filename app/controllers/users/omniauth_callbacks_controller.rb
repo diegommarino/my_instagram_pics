@@ -4,7 +4,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.token = request.env["omniauth.auth"].credentials.token
     @user.save
     if @user.persisted?
-      session[:instagram_token] = request.env["omniauth.auth"].credentials.token
       session["devise.instagram_data"] = request.env["omniauth.auth"]
       sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
     else
