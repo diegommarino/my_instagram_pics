@@ -11,6 +11,20 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+    <% if current_user %>
+    <nav class="navbar fixed-top navbar-light bg-light">
+      <div class="navbar-brand" >
+        <img src="/instagram-logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+        <h1 class="navbar-brand" style='font-family: Billabong; font-size: 30px;'>My Instagram Pics</h1>
+      </div>
+      <h1 class="navbar-brand" style='font-family: Billabong; font-size: 40px; text-align: center'><%= current_user.name %></h1>
+      <%= button_to 'Logout', destroy_user_session_path, class: 'btn btn-secondary', method: :delete %>
+    </nav>
+    <% end %>
+
+    <div style="width: 80%; margin: 100px auto auto auto; ">
+      <%= yield %>
+    </div>
   </body>
 </html>
