@@ -81,6 +81,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   # Authentication methods
   config.include ValidUserRequestHelper, :type => :request
+  config.include ValidUserRequestHelper, :type => :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

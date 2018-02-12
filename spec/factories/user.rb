@@ -5,6 +5,6 @@ FactoryGirl.define do
         password_confirmation "testtest"
         name "testtest"
         provider "instagram"
-        token "229766773.7de1c86.b18ce418a79a4cc0afe43ea110e6dc68"
+        token "123"
     end
 end
