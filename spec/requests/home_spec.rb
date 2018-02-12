@@ -30,7 +30,6 @@ RSpec.describe 'Home Controller Requests', type: :request do
             end
 
             it 'flashes a expired token message.' do
-                binding.pry
                 expect(flash[:warning]).to eq I18n.t 'omniauth_messages.expired_token'
             end
         end

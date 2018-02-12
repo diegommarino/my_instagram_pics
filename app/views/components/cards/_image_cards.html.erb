@@ -7,9 +7,9 @@ Provide a bootstrap card element with image and optional comment and header.
 @param heading [String] (nil) the heading
 %>
 
-<% img_src = local_assigns.fetch(:img_src) %>
+<% img_src = local_assigns.fetch(:img_src, nil) %>
 
-<% return if img_src.blank? %>
+<% return "" if img_src.blank? %>
 
 <% heading = local_assigns[:heading].presence %>
 <% comment = local_assigns[:comment].presence %>
