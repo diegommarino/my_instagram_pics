@@ -16,7 +16,12 @@ module Instagram
                 standard_resolution: 'standard_resolution'
             }.fetch(resolution)
 
-            extract_pics_urls(feed_pics_service, res, with_comments)
+            service_response = feed_pics_service
+            if service_response["meta"]["code"] == 200
+                extract_pics_urls(service_response, res, with_comments)
+            else
+                nil
+            end
         end
 
         private

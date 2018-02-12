@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  omniauth_messages:
+    expired_token: "Your token expired! Please login again."
