@@ -7,7 +7,6 @@ end
 
 
 gem 'rails', '~> 5.1.4'
-gem 'sqlite3'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -21,6 +20,8 @@ gem 'omniauth-instagram'
 gem 'httparty'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'pg', '~> 0.21.0'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
