@@ -9,8 +9,8 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'components/alert', message: notice if notice %>
+    <%= render 'components/alert', message: alert if alert %>
 
     <% if current_user %>
     <nav class="navbar fixed-top navbar-light bg-light">
@@ -23,7 +23,7 @@
     </nav>
     <% end %>
 
-    <div style="width: 80%; margin: 100px auto auto auto; ">
+    <div style="width: 80%; margin: 100px auto auto auto;">
       <%= yield %>
     </div>
   </body>
